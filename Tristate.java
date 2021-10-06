@@ -30,7 +30,7 @@ public class Tristate extends NonResident
     
     /**
     This method calculates the tuition due by subtracting the total cost of tuition minus the 
-    money the student has already paid. 
+    money the student has already paid. Only full time students get a discount. 
     */
     @Override
     public void tuitionDue()
@@ -39,10 +39,13 @@ public class Tristate extends NonResident
         int CTDiscount = 5000; 
         
         float tuitionDue = getTotalCost() - getTotalPayment();
-        if (state.equals("NY"))
-            tuitionDue -= NYDiscount;
-        else // CT
-            tuitionDue -= CTDiscount;
+        if (getCreditHours() >= 12)
+        {
+            if (state.equals("NY"))
+                tuitionDue -= NYDiscount;
+            else // CT
+                tuitionDue -= CTDiscount;
+        }
         setTuitionDue(tuitionDue);
     }
     
