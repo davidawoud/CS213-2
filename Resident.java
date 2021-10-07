@@ -58,6 +58,18 @@ public class Resident extends Student
     }
     
     /**
+    This method returns checks the validity of the financial aid amount. 
+    @return true if financial aid is positive and less than 10000, false if otherwise
+    */
+    public boolean isValidFinancial(float aid)
+    {
+        if (aid >= 0 && aid <= 10000)
+            return true;
+        else
+            return false;
+    }
+    
+    /**
     This method calculates the tuition due by subtracting the total cost of tuition minus the 
     money the student has already paid. 
     */
