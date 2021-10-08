@@ -26,9 +26,9 @@ public class Student
     with name 'Default Name' and a default major of CS and zero credit hours.
     It calls the overloaded constructor to pass on the values.  
     */
-    public Student()
+    public Student() throws Exception
     {
-        this(new Profile("Default Name","CS"), 0);
+        this(new Profile("Default Name","CS"), 12);
     }
     
     /**
@@ -37,10 +37,11 @@ public class Student
     @param profile     - profile (including name and major) of the student
     @param creditHours - number of credits the student is taking 
     */
-    public Student(Profile profile, int creditHours)
+    public Student(Profile profile, int creditHours) throws Exception
     {
         this.profile = profile;
         this.creditHours = creditHours;
+        isValidCreditHours();
     }
     
     /**
@@ -94,6 +95,15 @@ public class Student
     }
     
     /**
+    This method returns the date of last payment.
+    @return date of last payment
+    */
+    public String getLastPaymentDate()
+    {
+        return lastPaymentDate;
+    }
+    
+    /**
     This method returns the profile of the student. It's used in the compare
     method of Profile.
     @return profile of the student. 
@@ -104,15 +114,17 @@ public class Student
     }
     
     /**
-    Checks the validity of credit hours (between 3 and 24 inclusive). 
-    @return true if the credit hours is 3-24, false if otherwise
+    Checks the validity of credit hours (between 3 and 24 inclusive).
+    @throws Exception when invalid stuff is entered
     */
-    public boolean isValidCreditHours()
+    public void isValidCreditHours() throws Exception
     {
-        if (creditHours >= 3 && creditHours <= 24)
-            return true;
-        else
-            return false; 
+        if (creditHours < 0)
+            throw new Exception("Credit hours cannot be negative.");
+        if (creditHours >= 0 && creditHours < 3)
+            throw new Exception("Minimum credit hours is 3.");
+        if (creditHours > 24)
+            throw new Exception("Credit hours exceed the maximum 24.");
     }
     
     /**

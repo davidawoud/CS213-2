@@ -1,11 +1,11 @@
+import java.util.Calendar; 
+
 /**
 This class represents a date and includes methods that checks if the user-input
 date is valid and compares if a current date is before, equal to, or after another
 date
 @author Stephen Juan, David Halim
 */
-
-import java.util.Calendar; 
 
 public class Date implements Comparable<Date>
 {	

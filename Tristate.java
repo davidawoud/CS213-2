@@ -18,7 +18,7 @@ public class Tristate extends NonResident
     @param state           - the state that the student lives in
     */
     
-    public Tristate(Profile profile, int creditHours, String state)
+    public Tristate(Profile profile, int creditHours, String state)  throws Exception
     {
         super(profile, creditHours);
         if (state.equals("NY") || state.equals("nY") || state.equals("Ny") || state.equals("ny"))

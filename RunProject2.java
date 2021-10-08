@@ -6,12 +6,12 @@ This method should be used to run and test the entire program.
 
 public class RunProject2 
 {
-	/**
-	This is a main method that calls Collection manager.
-	@param args - user input - this is not used
-	*/
-	public static void main(String[] args)
-	{
-		new TuitionManager().run();
-	}
+    /**
+    This is a main method that calls Collection manager.
+    @param args - user input - this is not used
+    */
+    public static void main(String[] args)
+    {
+        new TuitionManager().run();
+    }
 }

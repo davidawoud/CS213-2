@@ -17,7 +17,7 @@ public class NonResident extends Student
     @param lastPayment     - the amount of the last payment
     @param LastPaymentDate - the date when the last payment was made
     */
-    public NonResident(Profile profile, int creditHours)
+    public NonResident(Profile profile, int creditHours)  throws Exception
     {
         super(profile, creditHours);
     }

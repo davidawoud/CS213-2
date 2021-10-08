@@ -17,7 +17,7 @@ public class International extends NonResident
     @param lastPaymentDate - the date of the last payment (from NonResident)
     @param studyAbroad     - if the student is in the study abroad program or not
     */
-    public International(Profile profile, int creditHours, boolean studyAbroad)
+    public International(Profile profile, int creditHours, boolean studyAbroad) throws Exception
     {
         super(profile, creditHours);
         this.studyAbroad = studyAbroad; 
@@ -28,23 +28,28 @@ public class International extends NonResident
     students. If they are study abroad, they are only allowed to take a maximum of 12 credits. 
     @return true, if it is study abroad and the credits are 3-12, false if otherwise
             true, if it is not study abroad and the credits are 3-24, false if otherwise
+     * @throws Exception 
     */
     @Override
-    public boolean isValidCreditHours()
+    public void isValidCreditHours() throws Exception
     {
        if (studyAbroad)
        {
-           if (getCreditHours() >= 3 && getCreditHours() <= 12)
-               return true;
-           else
-               return false;
+           if (getCreditHours() < 0)
+               throw new Exception("Credit hours cannot be negative.");
+           if (getCreditHours() >= 0 && getCreditHours() < 3)
+               throw new Exception("Minimum credit hours is 3.");
+           if (getCreditHours() > 12)
+               throw new Exception("Credit hours exceed the maximum 12.");
        }
        else
        {
-           if (getCreditHours() >= 3 && getCreditHours() <= 24)
-               return true;
-           else
-               return false; 
+           if (getCreditHours() < 0)
+               throw new Exception("Credit hours cannot be negative.");
+           if (getCreditHours() >= 0 && getCreditHours() < 12)
+               throw new Exception("ernational students must enroll at least 12 credits.");
+           if (getCreditHours() > 24)
+               throw new Exception("Credit hours exceed the maximum 24.");
        }
     }
     

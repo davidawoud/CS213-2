@@ -17,7 +17,7 @@ public class Resident extends Student
     @param lastPayment     - the amount of the last payment
     @param LastPaymentDate - the date when the last payment was made
     */
-    public Resident(Profile profile, int creditHours)
+    public Resident(Profile profile, int creditHours)  throws Exception
     {
         super(profile, creditHours);
     }
