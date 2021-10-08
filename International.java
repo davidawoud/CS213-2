@@ -6,7 +6,7 @@ and if they are study abroad or not. Contains updated tuition amount.
 
 public class International extends NonResident
 {
-    private boolean studyAbroad; 
+    private boolean studyAbroad = false; 
     
     /**
     This is a constructor for the international students that is the same as NonResident except it included 
@@ -17,10 +17,9 @@ public class International extends NonResident
     @param lastPaymentDate - the date of the last payment (from NonResident)
     @param studyAbroad     - if the student is in the study abroad program or not
     */
-    public International(Profile profile, int creditHours, boolean studyAbroad) throws Exception
+    public International(Profile profile, int creditHours) throws Exception
     {
         super(profile, creditHours);
-        this.studyAbroad = studyAbroad; 
     }
     
     /**
@@ -47,10 +46,23 @@ public class International extends NonResident
            if (getCreditHours() < 0)
                throw new Exception("Credit hours cannot be negative.");
            if (getCreditHours() >= 0 && getCreditHours() < 12)
-               throw new Exception("ernational students must enroll at least 12 credits.");
+               throw new Exception("Iernational students must enroll at least 12 credits.");
            if (getCreditHours() > 24)
                throw new Exception("Credit hours exceed the maximum 24.");
        }
+    }
+    
+    public void setStudyAbroad()
+    {
+        // Set study abroad status to true for an international student.
+        studyAbroad = true;
+        // If the number of credit hours is greater than 12, set it to 12;
+        if (getCreditHours() > minFulltime)
+            setCreditStudAbroad();
+        //set the payment to 0, clear the payment date
+        resetPaymentandDate();
+        // recalculate the tuition due
+        tuitionDue(); 
     }
     
     /**
@@ -68,20 +80,12 @@ public class International extends NonResident
             totalAmount = universityFee + additionalFee;
         else
         {
-            if (getCreditHours() >= minFulltime) // fulltime students
+            totalAmount += internationalTuition; 
+            if (this.getCreditHours() - fulltimeThreshold > 0) // extra credit over 16 fee 
             {
-                totalAmount += internationalTuition; 
-                if (this.getCreditHours() - fulltimeThreshold > 0) // extra credit over 16 fee 
-                {
-                    totalAmount += (nonResidentCreditHour * (getCreditHours() - fulltimeThreshold)); 
-                }
-                totalAmount += universityFee; // university fee
+                totalAmount += (nonResidentCreditHour * (getCreditHours() - fulltimeThreshold)); 
             }
-            else
-            {
-                totalAmount += (this.getCreditHours() * nonResidentCreditHour); // cost of tuition
-                totalAmount += (0.8 * universityFee);
-            }
+            totalAmount += (universityFee + additionalFee); // university fee
         }
         return totalAmount;
     }

@@ -76,6 +76,34 @@ public class Student
     }
     
     /**
+    This method is for the international class for study abroad. If they have more than
+    12 credits, then the credit amount is set to 12. 
+    */
+    public void setCreditStudAbroad()
+    {
+        creditHours = minFulltime; 
+    }
+    
+    /**
+    This method is for the international class for study abroad, sets payment to zero and clears
+    payment date
+    */
+    public void resetPaymentandDate()
+    {
+        totalPayment = 0; 
+        lastPaymentDate = "--/--/--"; 
+    }
+    
+    /**
+    This method returns the tuition due. It is used in JUnit Test classes.
+    @return the tuition due
+    */
+    public float getTuitionDue()
+    {
+        return tuitionDue; 
+    }
+    
+    /**
     This is do-nothing method that is to be overloaded in the classes that
     extend the student class. 
      * @return 
