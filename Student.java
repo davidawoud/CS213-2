@@ -180,4 +180,14 @@ public class Student
         return profile.toString() + ":" + getCreditHours() + " credit hours:tuition due:" + df.format(tuitionDue) + 
                ":totalPayment:" + df.format(totalPayment) + ":last payment date:" + lastPaymentDate;
     }
+    
+    /**
+    This method returns true if both student profiles are equal, false if not.
+    @return true, if both students are the same, false if otherwise
+    */
+    @Override
+    public boolean equals(Object obj)
+    {
+        return this.getProfile().equals(obj);
+    }
 }
