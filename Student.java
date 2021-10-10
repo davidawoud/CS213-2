@@ -25,6 +25,7 @@ public class Student
     This is a default constructor that sets the a default profile
     with name 'Default Name' and a default major of CS and zero credit hours.
     It calls the overloaded constructor to pass on the values.  
+    @throws Exception
     */
     public Student() throws Exception
     {
@@ -36,11 +37,23 @@ public class Student
     the number of credit the student is taking. 
     @param profile     - profile (including name and major) of the student
     @param creditHours - number of credits the student is taking 
+    @throws Exception
     */
     public Student(Profile profile, int creditHours) throws Exception
     {
         this.profile = profile;
         this.creditHours = creditHours;
+        isValidCreditHours();
+    }
+    
+    /**
+    This is a constructor with only the profile of the student as a parameter. 
+    @param profile - profile of the student
+    @throws Exception
+    */
+    public Student(Profile profile) throws Exception
+    {
+        this.profile = profile;
         isValidCreditHours();
     }
     
