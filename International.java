@@ -6,7 +6,7 @@ and if they are study abroad or not. Contains updated tuition amount.
 
 public class International extends NonResident
 {
-    private boolean studyAbroad = false; 
+    private boolean studyAbroad; 
     
     /**
     This is a constructor for the international students that is the same as NonResident except it included 
@@ -17,9 +17,12 @@ public class International extends NonResident
     @param lastPaymentDate - the date of the last payment (from NonResident)
     @param studyAbroad     - if the student is in the study abroad program or not
     */
-    public International(Profile profile, int creditHours) throws Exception
+    public International(Profile profile, int creditHours, boolean studyAbroad) throws Exception
     {
         super(profile, creditHours);
+        this.studyAbroad = studyAbroad; 
+        if (studyAbroad)
+            setStudyAbroad();
     }
     
     /**
