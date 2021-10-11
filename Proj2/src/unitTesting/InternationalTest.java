@@ -1,8 +1,4 @@
-package unitTesting;
 import static org.junit.Assert.*;
-import students.Profile;
-import students.International;
-
 /**
 This method tests the tuitionDue class. It calls it and checks the total tuition
 due to see if it matches up with the expected cost. 
@@ -11,6 +7,12 @@ due to see if it matches up with the expected cost.
 
 public class InternationalTest 
 {
+    private int tuition = 29737;
+    private int uniFee = 3268;
+    private int addFee = 2650;
+    private int creditHour = 966; 
+    private int threshold = 16; 
+    
     /**
     Tests a student with 12 credits, cost is $35655
     */
@@ -19,9 +21,8 @@ public class InternationalTest
     {
         International student1 = new International(new Profile("Student Test1", "CS"), 12, false);
         student1.tuitionDue();
-        assertTrue(student1.getTuitionDue() == 35655);
+        assertTrue(student1.getTuitionDue() == (tuition + uniFee + addFee));
         // $35655
-        
     }
     
     /**
@@ -33,7 +34,7 @@ public class InternationalTest
     {
         International student2 = new International(new Profile("Student Test2", "CS"), 12, true);
         student2.tuitionDue();
-        assertTrue(student2.getTuitionDue() == 5918);
+        assertTrue(student2.getTuitionDue() == (uniFee + addFee));
         // $5918
     }
     
@@ -45,7 +46,7 @@ public class InternationalTest
     {
         International student3 = new International(new Profile("Student Test3", "CS"), 16, false);
         student3.tuitionDue();
-        assertTrue(student3.getTuitionDue() == 35655);
+        assertTrue(student3.getTuitionDue() == (tuition + uniFee + addFee));
         // $35655
     }
     
@@ -57,7 +58,7 @@ public class InternationalTest
     {
         International student4 = new International(new Profile("Student Test4", "CS"), 20, false);
         student4.tuitionDue();
-        assertTrue(student4.getTuitionDue() == 39519);
+        assertTrue(student4.getTuitionDue() == (tuition + uniFee + addFee + (student4.getCreditHours() - threshold) * creditHour));
         // 39519
     }
     
@@ -71,7 +72,7 @@ public class InternationalTest
         International student5 = new International(new Profile("Student Test5", "CS"), 16, false);
         student5.setStudyAbroad();
         student5.tuitionDue();
-        assertTrue(student5.getTuitionDue() == 5918);
+        assertTrue(student5.getTuitionDue() == (uniFee + addFee));
         // $5918
     }
 }
