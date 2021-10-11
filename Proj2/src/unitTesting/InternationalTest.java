@@ -1,4 +1,8 @@
+package unitTesting;
 import static org.junit.Assert.*;
+import students.Profile;
+import students.International;
+
 /**
 This method tests the tuitionDue class. It calls it and checks the total tuition
 due to see if it matches up with the expected cost. 
@@ -7,14 +11,15 @@ due to see if it matches up with the expected cost.
 
 public class InternationalTest 
 {
-    private int tuition = 29737;
+	private int tuition = 29737;
     private int uniFee = 3268;
     private int addFee = 2650;
     private int creditHour = 966; 
-    private int threshold = 16; 
+    private int threshold = 16;
     
-    /**
+	/**
     Tests a student with 12 credits, cost is $35655
+    @throws Exception if the International constructor throws an Exception.
     */
     @org.junit.Test
     public void internationalTest1() throws Exception
@@ -23,12 +28,13 @@ public class InternationalTest
         student1.tuitionDue();
         assertTrue(student1.getTuitionDue() == (tuition + uniFee + addFee));
         // $35655
+        
     }
     
     /**
     Tests a student with 12 credits, with study abroad, cost is $5918
+    @throws Exception if the International constructor throws an Exception.
     */
-    // study abroad, no change credits
     @org.junit.Test
     public void internationalTest2() throws Exception
     {
@@ -40,6 +46,7 @@ public class InternationalTest
     
     /**
     Tests a student with 16 credits, cost is $35655
+    @throws Exception if the International constructor throws an Exception.
     */
     @org.junit.Test
     public void internationalTest3() throws Exception
@@ -52,20 +59,22 @@ public class InternationalTest
     
     /**
     Tests a student with 20 credits, which requires extra money credit hours, cost is $39519
+    @throws Exception if the International constructor throws an Exception.
     */
     @org.junit.Test
     public void internationalTest4() throws Exception
     {
         International student4 = new International(new Profile("Student Test4", "CS"), 20, false);
         student4.tuitionDue();
-        assertTrue(student4.getTuitionDue() == (tuition + uniFee + addFee + (student4.getCreditHours() - threshold) * creditHour));
+        assertTrue(student4.getTuitionDue() == (tuition
+              + uniFee + addFee + (student4.getCreditHours() - threshold) * creditHour));
         // 39519
     }
     
     /**
     Tests a student with 16 credits, with study abroad which changes credits to 12, cost is $5918
+    @throws Exception if the International constructor throws an Exception.
     */
-    // set study abroad, change credits
     @org.junit.Test
     public void internationalTest5() throws Exception
     {

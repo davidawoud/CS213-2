@@ -15,9 +15,8 @@ public class Tristate extends NonResident
     the value of the state that the student is in.
     @param profile         - profile of the student (from Student)
     @param creditHours     - number of credits that the student is taking (from Student)
-    @param lastPayment     - the last payment that the student made (from NonResident)
-    @param lastPaymentDate - the date of the last payment (from NonResident)
     @param state           - the state that the student lives in
+    @throws Exception if the credit hours are invalid.
     */
     
     public Tristate(Profile profile, int creditHours, String state)  throws Exception

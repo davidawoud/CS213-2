@@ -2,6 +2,10 @@ package unitTesting;
 import static org.junit.Assert.*;
 import students.Date;
 
+/**
+This class tests the isValid() method in the Date class.
+@author Stephen Juan, David Halim
+*/
 public class DateTest 
 {
     @org.junit.Test

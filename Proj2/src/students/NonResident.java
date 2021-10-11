@@ -16,8 +16,7 @@ public class NonResident extends Student
     payment and the date of the most recent payment.
     @param profile         - profile of the student (from Student)
     @param creditHours     - number of credits that the student is taking (from Student)
-    @param lastPayment     - the amount of the last payment
-    @param LastPaymentDate - the date when the last payment was made
+    @throws Exception if the credit hours are invalid.
     */
     public NonResident(Profile profile, int creditHours)  throws Exception
     {

@@ -15,9 +15,8 @@ public class International extends NonResident
     whether or not the student is in the study abroad program or not. 
     @param profile         - profile of the student (from Student)
     @param creditHours     - number of credits that the student is taking (from Student)
-    @param lastPayment     - the last payment that the student made (from NonResident)
-    @param lastPaymentDate - the date of the last payment (from NonResident)
     @param studyAbroad     - if the student is in the study abroad program or not
+    @throws Exception if the credit hours are invalid.
     */
     public International(Profile profile, int creditHours, boolean studyAbroad) throws Exception
     {
@@ -30,9 +29,7 @@ public class International extends NonResident
     /**
     This method overrides the isValidCreditHours from Student and includes extra restrictions for study abroad
     students. If they are study abroad, they are only allowed to take a maximum of 12 credits. 
-    @return true, if it is study abroad and the credits are 3-12, false if otherwise
-            true, if it is not study abroad and the credits are 3-24, false if otherwise
-     * @throws Exception 
+    @throws Exception if the credit hours are invalid.
     */
     @Override
     public void isValidCreditHours() throws Exception
@@ -44,7 +41,7 @@ public class International extends NonResident
        if (getCreditHours() > 24)
            throw new Exception("Credit hours exceed the maximum 24.");
        if ( getCreditHours() < 12)
-           throw new Exception("Iernational students must enroll at least 12 credits.");   
+           throw new Exception("International students must enroll at least 12 credits.");   
        if (studyAbroad && getCreditHours() > 12)
     	   throw new Exception("Credit hours exceed the maximum 12.");
     }
@@ -100,8 +97,8 @@ public class International extends NonResident
     
     /**
     This method returns a string representation of the student in the format
-    "name:major:credit hours:tuition due: last payment:payment date:non-resident (tri-state):state".
-    @return 
+    "name:major:credit hours:tuition due: last payment:payment date:non-resident:Internatiional".
+    @return string representation of a student.
     */
     @Override
     public String toString()

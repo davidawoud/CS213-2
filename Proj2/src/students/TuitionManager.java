@@ -1,14 +1,13 @@
 package students;
 
+import java.util.Scanner;
+import java.util.StringTokenizer;
+
 /**
 This class is the client driver class that takes in user-inputted commands and information
 and does functions with them using the Roster class
 @author Stephen Juan, David Halim
 */
-
-import java.util.Scanner;
-import java.util.StringTokenizer;
-
 public class TuitionManager
 {
     private int numberOfTokens;
@@ -91,6 +90,7 @@ public class TuitionManager
     to be performed. It terminates the entire program once the 'Q' is entered
     @param command    - the command the user inputs
     @param roster - the roster the user wants to modify
+    @throws Exception if any exception was thrown while processing the command.
     */
     public void switchCommand(String[] command, Roster roster) throws Exception
     {
@@ -204,6 +204,7 @@ public class TuitionManager
     An Exception thrower that checks for missing input.
     @param command    - the command the user inputs
     @param roster - the roster the user wants to modify
+    @throws Exception if any data is missing.
     */
     public void missingDataSwitch(String[] command, Roster roster) throws Exception
     {

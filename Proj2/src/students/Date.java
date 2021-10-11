@@ -25,7 +25,7 @@ public class Date implements Comparable<Date>
     /**
     This is a constructor for the Date class that accepts a date as a string and gives values
     for the month, day and year from that string.
-    @param date that is to be processed as a string
+    @param Date that is to be processed as a string
     */
     public Date(String Date)
     {
@@ -105,7 +105,8 @@ public class Date implements Comparable<Date>
     @param day   - the input day to be checked
     @param month - the input month to be checked
     @param year  - the input year to be checked
-    @return
+    @return true if day is positive, month is between 1-12 and year is 2021,
+            false if otherwise
     */
     private boolean isValid_negativeOr2021(int day, int month, int year)
     {

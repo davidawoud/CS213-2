@@ -26,7 +26,7 @@ public class Student
     This is a default constructor that sets the a default profile
     with name 'Default Name' and a default major of CS and zero credit hours.
     It calls the overloaded constructor to pass on the values.  
-    @throws Exception
+    @throws Exception if the credit hours are invalid.
     */
     public Student() throws Exception
     {
@@ -38,7 +38,7 @@ public class Student
     the number of credit the student is taking. 
     @param profile     - profile (including name and major) of the student
     @param creditHours - number of credits the student is taking 
-    @throws Exception
+    @throws Exception if the credit hours are invalid.
     */
     public Student(Profile profile, int creditHours) throws Exception
     {
@@ -50,7 +50,7 @@ public class Student
     /**
     This is a constructor with only the profile of the student as a parameter. 
     @param profile - profile of the student
-    @throws Exception
+    @throws Exception if the credit hours are invalid.
     */
     public Student(Profile profile) throws Exception
     {
@@ -122,9 +122,7 @@ public class Student
     /**
     This is do-nothing method that is to be overloaded in the classes that
     extend the student class. 
-     * @return 
     */
-    
     public void tuitionDue() // <- total cost of tuition minus total payment
     {
     }
@@ -159,7 +157,7 @@ public class Student
     
     /**
     Checks the validity of credit hours (between 3 and 24 inclusive).
-    @throws Exception when invalid stuff is entered
+    @throws Exception if the credit hours are invalid.
     */
     public void isValidCreditHours() throws Exception
     {
@@ -181,7 +179,7 @@ public class Student
     {
         DecimalFormat df = new DecimalFormat(",##0.00");
         return profile.toString() + ":" + getCreditHours() + " credit hours:tuition due:" + df.format(tuitionDue) + 
-               ":totalPayment:" + df.format(totalPayment) + ":last payment date:" + lastPaymentDate;
+               ":total payment:" + df.format(totalPayment) + ":last payment date: " + lastPaymentDate;
     }
     
     /**

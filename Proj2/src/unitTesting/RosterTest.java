@@ -16,7 +16,7 @@ public class RosterTest
 {
     /**
     This method tests the add method of the roster. 
-    @throws Exception
+    @throws Exception if any constructor throws an Exception.
     */
     @org.junit.Test
     public void addTest() throws Exception
@@ -48,7 +48,7 @@ public class RosterTest
     
     /**
     This method tests the remove class of roster.
-    @throws Exception
+    @throws Exception if any constructor throws an Exception.
     */
     @org.junit.Test
     public void removeTest() throws Exception

@@ -337,6 +337,8 @@ public class Roster
     @param student to pay tuition.
     @param paymentDate to specify the payment date.
     @param payment to specify the payment amount.
+    @throws Exception if Student is not in the roster,
+                         Amount is greater than amount due.
     */
     public void payTuition(Student student, Date paymentDate, float payment) throws Exception
     {
@@ -349,7 +351,7 @@ public class Roster
             throw new Exception("Amount is greater than amount due.");
         
         if (!paymentDate.isValid())
-        	throw new Exception("Payment date invalid.");
+        	throw new Exception("Amount is greater than amount due");
         
         students[studentIndex].setLastPaymentDateAmount(paymentDate, payment);
     }
@@ -361,6 +363,7 @@ public class Roster
     @param studyAbroad value of study abroad (true or false).
     @return true if the setStudyAbroad is successful,
             false if the student does not exist in the class. 
+    @throws Exception if Student is not international.
     */
     public boolean setStudyAbroad(Student student, boolean studyAbroad) throws Exception
     {
@@ -386,6 +389,8 @@ public class Roster
     @param aid value to be given.
     @return true if the setFinancialAid is successful,
             false if the student does not exist in the class. 
+    @throws Exception if Financial aid amount is invalid,
+                         Student is not a resident student.
     */
     public boolean setFinancialAid(Student student, float aid) throws Exception
     {
